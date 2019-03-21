@@ -8,7 +8,7 @@ An example use case would be configuring a Docker image sing environment variabl
 __Usage:__
 
 ```
-let gc_config = require('google-cloud-environment-credential-config')
+let gc_config = require('google-cloud-json-environment-credential')
 
 gc_config.configure()
 ```
