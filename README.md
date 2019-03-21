@@ -1,9 +1,6 @@
 # google-cloud-json-environment-credential
 
-_Rationale_: For certain use cases it is convenient to configure an application with credentials directly passed as an environment variable.
-The Google Cloud api currently doesn't (easily) support this, instead preferring you pass in a name of a local file containing the credential.
-
-An example use case would be configuring a Docker image sing environment variables.
+_Rationale_: Provides a few different options for configuring Google Cloud credetials.
 
 __Usage:__
 
@@ -11,14 +8,18 @@ __Usage:__
 let gc_config = require('google-cloud-json-environment-credential')
 
 gc_config.configure()
+
+OR
+
+gc_config.configure(<file path of local credentials.json>)
 ```
 
-The script expects the environment variable `GOOGLE_APPLICATION_CREDENTIALS_JSON` is set with the JSON credentials value.
+__Flow__
 
-It will then save the JSON to a temp file and set the Google Cloud Library's expected `GOOGLE_APPLICATION_CREDENTIALS` to point to it.
+If the environment variable `GOOGLE_APPLICATION_CREDENTIALS` is set this script returns without doing anything.
 
-Kind of a hack, I know, but it's an easy way to configure your apps if you don't want to copy your credentials.json file everywhere.
+If the environment variable `GOOGLE_APPLICATION_CREDENTIALS_JSON` is set, this script will save the JSON to a local temp file and set GOOGLE_APPLICATION_CREDENTIALS with that file's path.
 
-__Notes:__
+If the optional `credentialsJsonFile` parameter is passed to this script it will set `GOOGLE_APPLICATION_CREDENTIALS` to that value.
 
-If the environment variable `GOOGLE_APPLICATION_CREDENTIALS` is set then the script is bypassed.
+If none of the above apply `GOOGLE_APPLICATION_CREDENTIALS` will be set to `credentials.json` and hope for the best.
