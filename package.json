@@ -1,0 +1,11 @@
+{
+  "name": "google-cloud-json-environment-credential",
+  "version": "1.0.0",
+  "description": "Use an environment variable to configure a Google Cloud client",
+  "license": "MIT",
+  "repository": "devilelephant/google-cloud-json-environment-credential",
+  "main": "index.js",
+  "author": "George Coller",
+  "keywords": ["google", "cloud", "environment", "env", "variable", "json", "client", "configuration", "credentials"],
+  "dependencies": { }
+}
